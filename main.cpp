@@ -1,32 +1,33 @@
 #include "shifter.hpp"
 #include "display.hpp"
 #include "timer.hpp"
+#include "adc.hpp"
 
 #include <avr/interrupt.h>
 
 /**
- * Odczytuje wynik pomiaru napięcia z ADC i przelicza go na temperaturę.
+ * Uśrednia pomiar temperatury.
  *
- * @return Temperatura w °C.
+ * @return Uśredniona temperatura.
  */
-double measure()
+uint16_t average()
 {
-	return 0;
+	return adc.temperature();
 }
 
 /**
- * Konfiguruje i uruchamia ADC.
+ * Obsługa przerwania pomiaru ADC.
  */
-void adcInitialize()
+ISR(ADC_vect)
 {
+	display.print(average(), 2);
 }
 
 /**
- * Obsługa przerwania komparatora Timer/Counter1.
+ * Obsługa przerwania komparatora Timer/Counter0.
  */
 ISR(TIMER0_OVF_vect)
 {
-	display.print(measure(), 2);
 	display.refresh();
 }
 
@@ -37,7 +38,7 @@ int main()
 {
 	shifter.initialize();
 	timer.initialize();
-	adcInitialize();
+	adc.initialize();
 
 	sei();
 
