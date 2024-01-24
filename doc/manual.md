@@ -54,7 +54,7 @@ Pierwsze 19 wyników będzie zafałszowane ze względu na to, że tablica używa
 
 ## Modyfikacja programu
 
-Implementacja algorytmu wymaga zadeklarowania statycznej tablicy o rozmiarze, który najlepiej określić stałą, używaną dalej w algorytmie:
+Implementacja algorytmu wymaga zadeklarowania statycznej tablicy o rozmiarze, który najlepiej określić stałą, używaną dalej w algorytmie (stała `SIZE` to rozmiar $k$ średniej kroczącej):
 
 ```cpp
 constexpr uint8_t SIZE = 20;
@@ -62,6 +62,8 @@ static double measures[SIZE];
 ```
 
 \awesomebox[teal]{2pt}{\faCode}{teal}{Zmienne statyczne i globalne domyślnie inicijalizowane są zerami.}
+
+\awesomebox[teal]{2pt}{\faCode}{teal}{Implementację średniej kroczącej umieść w funkcji \lstinline{average()} w pliku \lstinline{main.cpp}.}
 
 \begin{algorithm}
 \caption{Średnia krocząca $SMA_{size}$}
