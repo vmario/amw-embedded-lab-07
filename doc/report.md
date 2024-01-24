@@ -1,5 +1,5 @@
 ---
-title: "Ćwiczenie 6: Obsługa przetwornika analogowo-cyfrowego (ADC)"
+title: "Ćwiczenie 7: Uśrednianie danych pomiarowych"
 author: [Mariusz Chilmon <<mariusz.chilmon@ctm.gdynia.pl>>]
 lang: "pl"
 titlepage: no
@@ -32,30 +32,32 @@ _W trosce o Państwa wyniki proszę o czytelne wpisywanie nazwisk._
 
 ## Zadanie podstawowe
 
-W jakim zakresie częstotliwości taktowania ADC gwarantowane jest zachowanie najlepszych parametrów pomiaru? Jaką konkretnie częstotliwość można uzyskać w naszym przypadku?
+Pomiar wykonywany jest z częstotliwością 0,95&nbsp;Hz. Uśredniamy 20 ostatnich pomiarów. Z jakiego przedziału czasu uwzględniane są pomiary?
 
-\awesomebox[purple]{2pt}{\faMicrochip}{purple}{Częstotliwość taktowania mikrokontrolera wynosi 16~MHz.}
-
-\awesomebox[violet]{2pt}{\faBook}{violet}{Szczegóły odnośnie taktowania ADC można znaleźć w rozdziale \textit{Analog-to-Digital Converter} w sekcji \textit{Prescaling and Conversion Timing} dokumentacji mikrokontrolera.}
-
-\vspace{4.5cm}
-
-Wyznacz wzór na mierzone napięcie w zależności od zawartości rejestrów `ADCL` i `ADCH` (w dokumentacji mikrokontrolera traktowanych łącznie jako `ADC`).
-
-\awesomebox[violet]{2pt}{\faBook}{violet}{Szczegóły odnośnie wyniku pomiaru można znaleźć w rozdziale \textit{Analog-to-Digital Converter} w sekcji \textit{ADC Conversion Result} dokumentacji mikrokontrolera.}
-
-\vspace{2.5cm}
-
-Wyznacz wzór na zmierzoną temperaturę w zależności od napięcia wyjściowego na pinie _OUTPUT_ termometru LM35DZ.
-
-\awesomebox[violet]{2pt}{\faBook}{violet}{Szczegóły odnośnie działania termometru najłatwiej odczytać ze schematu \textit{Basic Centigrade Temperature Sensor} w dokumentacji LM35DZ.}
+\vspace{3cm}
 
 ## Zadanie rozszerzone
 
-Jaką rozdzielczość pomiarową w V uzyskujemy przy napięciu referencyjnym 1,1&nbsp;V i 10-bitowej rozdzielczości ADC?
+Odczytaj z procesu kompilacji rozmiar programu (segment `.text`) oraz rozmiar danych globalnych i&nbsp;statycznych w pamięci RAM (segment `.bss`) dla Twojego programu. Zwiększ liczbę uśrednianych próbek z 20 do 32 i powtórnie odczytaj rozmiary segmentów. Oblicz różnicę tych rozmiarów między dwoma wersjami programu.
 
-\vspace{2.5cm}
+\begin{center}
+\begin{tabular}{ |c|c|c|c| } 
+\hline
+ & $k = 20$ & $k = 32$ & Różnica \\
+\hline
+\texttt{.text} & & & \\ 
+\hline
+\texttt{.bss} & & & \\ 
+\hline
+\end{tabular}
+\end{center}
 
-Jaką rozdzielczość pomiarową w °C uzyskujemy w powyższym przypadku dla termometru LM35DZ?
+Jaki rozmiar ma typ `double` lub inny użyty przez Ciebie do przechowywania poprzednich próbek? Jaki rozmiar ma zazwyczaj typ `double` na komputerach PC (zgodnie z IEEE 754)?
 
-\vspace{2.5cm}
+\vspace{3cm}
+
+## \faCertificate&nbsp; Zadanie specjalne
+
+_+1 pkt dla osoby, która jako pierwsza poda poprawną odpowiedź._
+
+Dlaczego po zwiększeniu rozmiaru tablicy zmniejszył się rozmiar kodu programu, a więc liczba instrukcji?
